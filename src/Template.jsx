@@ -1,7 +1,7 @@
-import SplitScreen from './layout/SplitScreen';
+import SplitScreen from './layout/SplitScreen';//main
 
 function App() {
-  return (
+  return (<>
     <SplitScreen>
       {/******** Left Side  *********/}
       <>
@@ -61,6 +61,7 @@ function App() {
           {/******** End DashBoard ******/}
         </div>
       </>
+      
 
       {/******** Right Side  *********/}
       <div className='flex-1 h-screen p-4 flex flex-col gap-y-2 overflow-scroll'>
@@ -93,7 +94,7 @@ function App() {
         </div>
         {/******** End 1-Cat ******/}
       </div>
-    </SplitScreen>
+    </SplitScreen></>
   );
 }
 
