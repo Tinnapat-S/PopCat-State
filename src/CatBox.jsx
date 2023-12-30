@@ -1,7 +1,6 @@
 import React from "react"
 export default function CatBox(props) {
   const [count, setCount] = React.useState(0)
-
   const haddleDeleteButton = (thisCatId) => {
     const deleteThisCat = props.cat.findIndex((cat) => cat.id == thisCatId) //props.cat == [{},{}]  findIndex at id = id
     props.setCatBois((current) =>
@@ -24,7 +23,10 @@ export default function CatBox(props) {
   }
 
   return props.cat.map((catty) => (
-    <div className="flex justify-between items-center border border-gray-200 rounded-lg p-4 shadow-lg relative">
+    <div
+      key={catty.id}
+      className="flex justify-between items-center border border-gray-200 rounded-lg p-4 shadow-lg relative"
+    >
       {/* Remove Cat */}
       <div
         onClick={() => haddleDeleteButton(catty.id)}
