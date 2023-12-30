@@ -2,16 +2,30 @@ import React from "react"
 export default function CatBox(props) {
   const [count, setCount] = React.useState(0)
   const haddleDeleteButton = (thisCatId) => {
-    const deleteThisCat = props.cat.findIndex((cat) => cat.id == thisCatId) //props.cat == [{},{}]  findIndex at id = id
+    // const deleteThisCat = props.cat.findIndex((cat) => cat.id == thisCatId) //props.cat == [{},{}]  findIndex at id = id
     props.setCatBois((current) =>
-      current.filter((cat, index) => index !== deleteThisCat)
+      current.filter((cat) => cat.id !== props.cat.id)
     )
-    props.setCountCat((current) => current - 1)
-    //props.setCat(current) => current.filter((cat) => cat !== thiscat)
-    //props.setCat((current) => [...current].filter(!cat))
+    // props.setCountCat((current) => current - 1)
+  }
+  const UpdateCatBoisCount = (count) => {
+    props.setCatBois((current) => {
+      return current.map((cat) => {
+        if (cat.id === props.cat.id) {
+          cat.count = count
+        }
+        return cat
+      })
+      //   const temp = current.filter((cat) => {
+      //     if (cat.id === props.cat.id) return cat
+      //   })
+    })
   }
   const haddleIncreaseButton = () => {
-    return setCount((count) => count + 1)
+    console.log(props.cat)
+    const newCount = props.cat.count + 1
+    UpdateCatBoisCount(newCount)
+    //return setCount(newCount)
   }
   const haddleDecreaseButton = () => {
     if (count > 0) {
@@ -22,14 +36,14 @@ export default function CatBox(props) {
     setCount(0)
   }
 
-  return props.cat.map((catty) => (
+  return (
     <div
-      key={catty.id}
+      key={props.cat.id}
       className="flex justify-between items-center border border-gray-200 rounded-lg p-4 shadow-lg relative"
     >
       {/* Remove Cat */}
       <div
-        onClick={() => haddleDeleteButton(catty.id)}
+        onClick={() => haddleDeleteButton(props.cat.id)}
         className="absolute top-[-15px] right-[-15px] bg-red-400 text-white  w-[30px] h-[30px] rounded-full text-center align-middle cursor-pointer "
       >
         x
@@ -46,9 +60,9 @@ export default function CatBox(props) {
       {/* Cat Profile & Count*/}
       <div className="flex-1 px-4">
         <p className="text-2xl">
-          {catty.name} : {catty.country}
+          {props.cat.name} : {props.cat.country}
         </p>
-        <p>count : {count}</p>
+        <p>count : {props.cat.count}</p>
       </div>
       <div className="flex gap-1">
         {/* Button Group */}
@@ -72,5 +86,5 @@ export default function CatBox(props) {
         </button>
       </div>
     </div>
-  ))
+  )
 }

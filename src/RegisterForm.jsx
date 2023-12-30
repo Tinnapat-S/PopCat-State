@@ -1,7 +1,7 @@
 import React from "react"
 import { nanoid } from "nanoid"
 export default function RegisterForm(props) {
-  const { setCountCat, setCatBois, catBois } = props
+  const { setCatBois, catBois } = props
   const [catName, setCatName] = React.useState("")
   const [catCountry, setCatCountry] = React.useState("")
   const [isError, setIsError] = React.useState(false)
@@ -9,11 +9,11 @@ export default function RegisterForm(props) {
   const haddleOnSubmit = (event) => {
     event.preventDefault()
     if (catName != "" && catCountry != "") {
-      setCountCat(catBois.length + 1)
       const catObj = {
         id: nanoid(),
         name: catName,
         country: catCountry,
+        count: 0,
       }
       let temp = setCatBois([...catBois, catObj])
       setCatName("")

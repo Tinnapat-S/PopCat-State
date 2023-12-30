@@ -5,10 +5,10 @@ import CatBox from "./CatBox"
 
 function App() {
   const [catBois, setCatBois] = React.useState([])
-  /// dashboard
-  const [countCat, setCountCat] = React.useState(0)
-  const [totalCount, setTotalCount] = React.useState(0)
 
+  /// dashboard
+  const totalCount = catBois.reduce((total, cat) => total + (cat.count || 0), 0)
+  console.log(totalCount)
   return (
     <>
       <SplitScreen>
@@ -16,11 +16,7 @@ function App() {
         <>
           <div className="flex-1 flex flex-col p-[20px] text-center justify-center">
             {/******** Start Form ******/}
-            <RegisterForm
-              setCountCat={setCountCat}
-              setCatBois={setCatBois}
-              catBois={catBois}
-            />
+            <RegisterForm setCatBois={setCatBois} catBois={catBois} />
             {/******** End Form ******/}
           </div>
 
@@ -30,7 +26,9 @@ function App() {
               <div className="flex justify-evenly">
                 <div>
                   <h1 className="text-3xl font-semibold italic">Total Cat</h1>
-                  <h1 className="text-3xl font-semibold italic">{countCat}</h1>
+                  <h1 className="text-3xl font-semibold italic">
+                    {catBois.length}
+                  </h1>
                 </div>
                 <div>
                   <h1 className="text-3xl font-semibold italic">Total Count</h1>
@@ -63,11 +61,10 @@ function App() {
         <div className="flex-1 h-screen p-4 flex flex-col gap-y-2 overflow-scroll">
           {/******** Start 1-Cat ******/}
 
-          <CatBox
-            cat={catBois}
-            setCatBois={setCatBois}
-            setCountCat={setCountCat}
-          />
+          {catBois &&
+            catBois.map((cat) => {
+              return <CatBox cat={cat} setCatBois={setCatBois} />
+            })}
           {/******** End 1-Cat ******/}
         </div>
       </SplitScreen>
