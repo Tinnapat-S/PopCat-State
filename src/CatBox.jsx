@@ -38,10 +38,7 @@ export default function CatBox(props) {
   }
 
   return (
-    <div
-      key={props.cat.id}
-      className="flex justify-between items-center border border-gray-200 rounded-lg p-4 shadow-lg relative"
-    >
+    <div className="flex justify-between items-center border border-gray-200 rounded-lg p-4 shadow-lg relative">
       {/* Remove Cat */}
       <div
         onClick={() => haddleDeleteButton(props.cat.id)}
