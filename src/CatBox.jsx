@@ -22,18 +22,19 @@ export default function CatBox(props) {
     })
   }
   const haddleIncreaseButton = () => {
-    console.log(props.cat)
     const newCount = props.cat.count + 1
     UpdateCatBoisCount(newCount)
     //return setCount(newCount)
   }
   const haddleDecreaseButton = () => {
-    if (count > 0) {
-      return setCount((count) => count - 1)
+    if (props.cat.count > 0) {
+      const newCount = props.cat.count - 1
+      UpdateCatBoisCount(newCount)
     }
   }
   const haddleResetButton = () => {
-    setCount(0)
+    const newCount = (props.cat.count = 0)
+    UpdateCatBoisCount(newCount)
   }
 
   return (
