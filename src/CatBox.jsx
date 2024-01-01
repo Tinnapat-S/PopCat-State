@@ -1,12 +1,11 @@
 import React from "react"
 export default function CatBox(props) {
-  const [count, setCount] = React.useState(0)
+  const [mouth, setMouth] = React.useState(true)
   const haddleDeleteButton = (thisCatId) => {
     // const deleteThisCat = props.cat.findIndex((cat) => cat.id == thisCatId) //props.cat == [{},{}]  findIndex at id = id
     props.setCatBois((current) =>
       current.filter((cat) => cat.id !== props.cat.id)
     )
-    // props.setCountCat((current) => current - 1)
   }
   const UpdateCatBoisCount = (count) => {
     props.setCatBois((current) => {
@@ -16,15 +15,11 @@ export default function CatBox(props) {
         }
         return cat
       })
-      //   const temp = current.filter((cat) => {
-      //     if (cat.id === props.cat.id) return cat
-      //   })
     })
   }
   const haddleIncreaseButton = () => {
     const newCount = props.cat.count + 1
     UpdateCatBoisCount(newCount)
-    //return setCount(newCount)
   }
   const haddleDecreaseButton = () => {
     if (props.cat.count > 0) {

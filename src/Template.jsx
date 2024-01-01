@@ -5,7 +5,7 @@ import CatBox from "./CatBox"
 import DashBoard from "./Dashboard"
 function App() {
   const [catBois, setCatBois] = React.useState([])
-  /// dashboard
+
   return (
     <>
       <SplitScreen>

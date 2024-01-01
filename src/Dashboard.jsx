@@ -15,7 +15,6 @@ export default function DashBoard({ catBois }) {
     ) // sort by highest count
     return temp.length > 0 ? temp[0] : null
   }
-  //const [highestCatName, highestCatCountry] = findHighestCatName() // if return array value
 
   return (
     <div className="flex flex-col gap-y-5 p-8 border border-gray-300 rounded-md h-full justify-center">
@@ -33,13 +32,13 @@ export default function DashBoard({ catBois }) {
         <div>
           <h1 className="text-3xl font-semibold italic">LEADER</h1>
           <h1 className="text-3xl font-semibold italic">
-            {highestCat?.name || "none"} : {highestCat?.country || "none"}
+            {highestCat()?.name || "none"} : {highestCat()?.country || "none"}
           </h1>
         </div>
         <div>
           <h1 className="text-3xl font-semibold italic">Highest Click</h1>
           <h1 className="text-3xl font-semibold italic">
-            {highestCat?.count || 0}
+            {highestCat()?.count || 0}
           </h1>
         </div>
       </div>
