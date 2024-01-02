@@ -16,6 +16,7 @@ export default function RegisterForm(props) {
         count: 0,
       }
       let temp = setCatBois([...catBois, catObj])
+      setCatCountry("")
       setCatName("")
       return temp
     }
@@ -35,7 +36,9 @@ export default function RegisterForm(props) {
         onSubmit={haddleOnSubmit}
         className="flex flex-col gap-y-5 p-8 border border-gray-300 rounded-md h-full justify-center text-black"
       >
-        <h1 className="text-3xl font-semibold italic">Join for Click Cat !!</h1>
+        <h1 className="text-3xl font-semibold italic text-white">
+          Join for Click Cat !!
+        </h1>
         {/* Cat Name */}
         <input
           onChange={haddleInputCatName}
@@ -48,6 +51,7 @@ export default function RegisterForm(props) {
         <select
           onChange={haddleInputCountry}
           className="w-full p-2  border-2 border-slate-300 rounded-md"
+          value={catCountry}
           defaultValue={""}
         >
           <option value="" disabled>

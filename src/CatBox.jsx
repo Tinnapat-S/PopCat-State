@@ -1,5 +1,9 @@
-import React from "react"
+import React, { useRef } from "react"
+import cat1 from "./assets/c1.png"
+import cat2 from "./assets/c2.png"
+import sound from "./assets/sound.mp3"
 export default function CatBox(props) {
+  const audioRef = useRef(null)
   const [mouth, setMouth] = React.useState(true)
   const haddleDeleteButton = (thisCatId) => {
     // const deleteThisCat = props.cat.findIndex((cat) => cat.id == thisCatId) //props.cat == [{},{}]  findIndex at id = id
@@ -19,11 +23,15 @@ export default function CatBox(props) {
   }
   const haddleIncreaseButton = () => {
     const newCount = props.cat.count + 1
+    audioRef.current.play()
+    setMouth(!mouth)
     UpdateCatBoisCount(newCount)
   }
   const haddleDecreaseButton = () => {
     if (props.cat.count > 0) {
       const newCount = props.cat.count - 1
+      audioRef.current.play()
+      setMouth(!mouth)
       UpdateCatBoisCount(newCount)
     }
   }
@@ -35,6 +43,7 @@ export default function CatBox(props) {
   return (
     <div className="flex justify-between items-center border border-gray-200 rounded-lg p-4 shadow-lg relative">
       {/* Remove Cat */}
+      <audio ref={audioRef} src={sound} />
       <div
         onClick={() => haddleDeleteButton(props.cat.id)}
         className="absolute top-[-15px] right-[-15px] bg-red-400 text-white  w-[30px] h-[30px] rounded-full text-center align-middle cursor-pointer "
@@ -44,10 +53,11 @@ export default function CatBox(props) {
       <div>
         {/* Cat Image */}
         <div className="w-[100px]">
-          <img
-            className="w-full h-auto object-cover rounded-lg"
-            src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=4086&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
+          {mouth ? (
+            <img className="w-full h-auto object-cover rounded-lg" src={cat1} />
+          ) : (
+            <img className="w-full h-auto object-cover rounded-lg" src={cat2} />
+          )}
         </div>
       </div>
       {/* Cat Profile & Count*/}

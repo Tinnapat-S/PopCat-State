@@ -5,7 +5,6 @@ import CatBox from "./CatBox"
 import DashBoard from "./Dashboard"
 function App() {
   const [catBois, setCatBois] = React.useState([])
-
   return (
     <>
       <SplitScreen>
@@ -22,11 +21,9 @@ function App() {
             {/******** End DashBoard ******/}
           </div>
         </>
-
         {/******** Right Side  *********/}
         <div className="flex-1 h-screen p-4 flex flex-col gap-y-2 overflow-scroll">
           {/******** Start 1-Cat ******/}
-
           {catBois &&
             catBois.map((cat) => {
               return <CatBox key={cat.id} cat={cat} setCatBois={setCatBois} />
