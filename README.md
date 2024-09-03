@@ -41,7 +41,7 @@ Hint : Manipulate Cat Data by Id
 - ทำการแสดงจำนวนการ click ทั้งหมด
 - เมื่อเพิ่ม,ลบแมว จะต้องมีการอัพเดทค่า ณ​ ปัจจุบันได้ถูกต้อง ทั้งจำนวนแมวและยอดคลิก
 
-Hint : สรุปค่าบางอย่างจาก All Cat Data
+Hint : สรุปค่าบางอย่างจาก All Cat Data  รับค่าcomponent count  -->> calculate ---> ui
 
 ### challenge 6 : บอร์ดแสดงผล II
 
